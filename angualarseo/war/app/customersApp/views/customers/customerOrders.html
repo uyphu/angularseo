@@ -1,0 +1,31 @@
+<div class="orders view">
+    <div class="container">
+        <header>
+            <h3><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Customer Orders</h3>
+        </header>
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div>
+                        <h4>Orders for <a href="#/customeredit/{{vm.customer.id}}">{{ vm.customer.firstName + ' ' + vm.customer.lastName }} <i class="icon-edit editIcon"></i></a></h4>
+                        {{vm.customer.address}}
+                        <br />
+                        {{vm.customer.city}}, {{vm.customer.state.name}}
+                        <br /><br />
+                    </div>
+                    <div class="navbar">
+	                    <ul class="nav navbar-nav">
+	                        <li class="toolbaritem">
+	                            <a data-ng-click="vm.navigate('/orderedit/0')">
+		                            <span class="glyphicon glyphicon-plus"></span> Add Order
+		                        </a>
+	                        </li>
+	                    </ul>
+	                    
+	                </div>
+                    <div data-ng-include="'/app/customersApp/views/orders/ordersTable.html'" data-ng-controller="OrderChildController as vm" />
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>

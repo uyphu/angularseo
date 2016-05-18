@@ -1,0 +1,82 @@
+<div class="view">
+    <div class="container">
+        <header>
+            <h3><span class="glyphicon glyphicon-edit"></span> {{vm.title}} Order</h3>
+        </header>
+        <form name="editForm" novalidate>
+            <div class="orderEdit">
+            	<div class="row">
+                    <div class="col-md-12">
+                        <span data-ng-hide="vm.order.id == {{vm.orderId}}"></span>
+                        <span data-ng-hide="vm.order.customerId == {{vm.customerId}}"></span>
+                        <br />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        Product:
+                    </div>
+                    <div class="col-md-10">
+                        <input type="text" name="product" class="form-control" data-ng-model="vm.order.product" required />
+                        <span class="errorMessage" ng-show="editForm.product.$touched && editForm.product.$invalid">
+                            Product is required
+                        </span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-2">
+                        Price:
+                    </div>
+                    <div class="col-md-10">
+                        <input type="text" name="price" class="form-control" data-ng-model="vm.order.price" required />
+                        <span class="errorMessage" ng-show="editForm.price.$touched && editForm.price.$invalid">
+                            Price is required
+                        </span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-2">
+                        quantity:
+                    </div>
+                    <div class="col-md-10">
+                        
+                        <input type="text" name="quantity"
+                               class="form-control"
+                               data-ng-model="vm.order.quantity"
+                               required />
+                        <!-- Show error if touched and unique is in error -->
+                        <span class="errorMessage" ng-show="editForm.quantity.$touched && editForm.quantity.$invalid">
+                            Quantity is required
+                        </span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary" data-ng-click="vm.saveOrder()"
+                                ng-disabled="editForm.$invalid || !editForm.$dirty">
+                            {{vm.buttonText}}
+                        </button>
+                        &nbsp;&nbsp;
+                        <button class="btn btn-danger" data-ng-if="vm.order.id > 0" data-ng-click="vm.deleteOrder()">Delete</button>
+                    </div>
+                </div>
+                <br />
+                <div class="statusRow">
+                    <br />
+                    <div class="label label-success" data-ng-show="vm.updateStatus">
+                        <span class="glyphicon glyphicon-thumbs-up icon-white"></span>&nbsp;&nbsp;Order updated!
+                    </div>
+                </div>
+                <div class="statusRow">
+                    <br />
+                    <div class="label label-important" data-ng-show="vm.errorMessage">
+                        <span class="glyphicon glyphicon-thumbs-down icon-white"></span>&nbsp;&nbsp;Error: {{ vm.errorMessage }}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
