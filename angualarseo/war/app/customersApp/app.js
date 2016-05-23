@@ -11,7 +11,6 @@
 	  app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 		
 			var viewBase = '/app/customersApp/views/';
-			
 			  $routeProvider
 			      .when('/home', {
 			          controller: 'HomeController',
@@ -28,10 +27,11 @@
 			          controller: 'LoginController',
 			          templateUrl: viewBase + 'login.html',
 			          controllerAs: 'vm'
-			      })
-			      .otherwise({ redirectTo: '/home' });
+			      });
+			      //.otherwise({ redirectTo: '/home' });
 			  // use the HTML5 History API
-		      $locationProvider.html5Mode(true);
+			  $locationProvider.html5Mode(true);
+			  //$locationProvider.hashPrefix('!');
 			}]);
 
 	
